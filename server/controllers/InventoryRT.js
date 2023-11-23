@@ -1,113 +1,113 @@
 var express = require('express');
 var router = express.Router();
 //const { router } = require('../config/app');
-let Assignment = require('../models/InventoryRT');
+let Products = require('../models/InventoryRT');
 
-module.exports.DislayAssignments = async (req, res, next)=>{ //< Mark function as async
+module.exports.DislayInventoryRT = async (req, res, next)=>{ //< Mark function as async
     try{
-        const Assignments = await Assignment.find(); //< Use of await keyword
-        res.render('Assignment/list', {
-            title: 'Assignments',
-            Assignments: Assignments
+        const InventoryRT = await Products.find(); //< Use of await keyword
+        res.render('Products/list', {
+            title: 'InventoryRT',
+            InventoryRT: InventoryRT
         });
     }catch(err){
         console.error(err);
         //Handle error
-        res.render('Assignment/list', {
+        res.render('Products/list', {
             error: 'Error on server'
         });
     }
 };
 
-module.exports.AddAssignment = async (req, res, next)=>{
+module.exports.AddProducts = async (req, res, next)=>{
     try{
-        res.render('Assignment/add',
+        res.render('Products/add',
             {
-                title:'Add Assignment'
+                title:'Add Products'
             })
     }
     catch(err)
     {
         console.error(err);
-        res.render('Assignment/list',
+        res.render('Products/list',
             {
                 error: 'Error on the server'
             });
     }
 };
 
-module.exports.CreateAssignment = async (req, res, next)=>{
+module.exports.CreateProducts = async (req, res, next)=>{
     try{
-        let newAssignment = Assignment({
+        let newProducts = Products({
             "Course":req.body.Course,
-            "AssignmentName": req.body.AssignmentName,
+            "ProductsName": req.body.ProductsName,
             "DueDate": req.body.DueDate,
         });
-        Assignment.create(newAssignment).then(() =>{
-            res.redirect('/assignments')
+        Products.create(newProducts).then(() =>{
+            res.redirect('/InventoryRT')
         })
     }
     catch(error){
         console.error(err);
-        res.render('Assignment/list',
+        res.render('Products/list',
             {
                 error: 'Error on the server'
             });
     }
 };
     
-module.exports.EditAssignment = async (req, res, next)=>{
+module.exports.EditProducts = async (req, res, next)=>{
     try{
         const id = req.params.id;
-        const assignmentToEdit = await Assignment.findById(id);
-        res.render('Assignment/edit',
+        const ProductsToEdit = await Products.findById(id);
+        res.render('Products/edit',
             {
-                title:'Edit Assignment',
-                Assignment:assignmentToEdit
+                title:'Edit Products',
+                Products:ProductsToEdit
             })
     }
     catch(error){
         console.error(err);
-        res.render('Assignment/list',
+        res.render('Products/list',
             {
                 error: 'Error on the server'
             });
     }
 }
 
-module.exports.ProcessEditAssignment = (req, res, next)=>{
+module.exports.ProcessEditProducts = (req, res, next)=>{
     try{
         const id = req.params.id;
-        let updatedAssignment = Assignment({
+        let updatedProducts = Products({
             "_id":id,
             "Course":req.body.Course,
-            "AssignmentName": req.body.AssignmentName,
+            "ProductsName": req.body.ProductsName,
             "DueDate": req.body.DueDate,
         });
-        Assignment.findByIdAndUpdate(id,updatedAssignment).then(()=>{
-            res.redirect('/assignments')
+        Products.findByIdAndUpdate(id,updatedProducts).then(()=>{
+            res.redirect('/InventoryRT')
         });
     }
     catch(error){
         console.error(err);
-        res.render('Assignment/list',
+        res.render('Products/list',
             {
                 error: 'Error on the server'
             });
     }
 }
 
-module.exports.DeleteAssignment = (req, res, next)=>{
+module.exports.DeleteProducts = (req, res, next)=>{
     try{
         let id = req.params.id;
-        Assignment.deleteOne({_id:id}).then(() =>
+        Products.deleteOne({_id:id}).then(() =>
         {
-            res.redirect('/assignments')
+            res.redirect('/InventoryRT')
         })
     }
     catch(error){
         console.error(err);
-        res.render('Assignment/list',
+        res.render('Products/list',
             {
                 error: 'Error on the server'
             });
