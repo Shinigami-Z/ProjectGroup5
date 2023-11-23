@@ -1,1 +1,1 @@
-module.exports = {"URI":"mongodb+srv://Shinigami:TaHDRpw5URPTjOXU@assignments.flvftmk.mongodb.net/Assignments?retryWrites=true&w=majority"}
+module.exports = {"URI":"mongodb+srv://Group5Project:AHjorTd@cluster0.mdtwyzm.mongodb.net/?retryWrites=true&w=majority"}

@@ -2,11 +2,12 @@ let mongoose = require('mongoose');
 
 // create a model class
 let assignmentsModel = mongoose.Schema({
-    Course:String,
-    AssignmentName:String,
-    DueDate:String,
+    ItemName:String,
+    NumOfUnits:Number,
+    PricePerUnit:Number,
+    TotalValue:Number
 },
 {
-    collection:"Assignments"
+    collection:"inventory"
 });
 module.exports = mongoose.model('Assignments',assignmentsModel);
