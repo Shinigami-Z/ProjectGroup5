@@ -2,7 +2,7 @@
 
 <%- include ../partials/main_nav.ejs %>
 
-<!-- Content for the Add page -->
+<!-- Content for the Edit page -->
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6 text-light">
@@ -10,32 +10,42 @@
 
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="courseTextField">Course</label>
-                    <input type="text" class="form-control"
-                    id="courseTextField"
-                    placeholder="Enter the Course"
-                    name="Course"
-                    value="<%= Assignment.Course %>"
-                    required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nameTextField">Assignment Name</label>
+                    <label for="nameTextField">Item Name</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
-                    placeholder="Enter the Assignments Name"
-                    name="AssignmentName"
-                    value="<%= Assignment.AssignmentName %>"
+                    placeholder="Enter the Item Name"
+                    name="ItemName"
+                    value="<%= Assignment.ItemName %>"
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label for="dueDateTextField">Due Date</label>
-                    <input type="text" class="form-control"
-                    id="dueDateTextField"
-                    placeholder="Enter the Due Date ex. mm/dd/yyyy"
-                    name="DueDate"
-                    value="<%= Assignment.DueDate %>"
+                    <label for="numOfUnitsNumberField">Number of Units</label>
+                    <input type="number" class="form-control"
+                    id="numOfUnitsNumberField"
+                    placeholder="Enter the Number of Units"
+                    name="NumOfUnits"
+                    value="<%= Assignment.NumOfUnits %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pricePerUnitNumberField">Price per Unit</label>
+                    <input type="number" class="form-control"
+                    id="pricePerUnitNumberField"
+                    placeholder="Enter the Price per Unit"
+                    name="PricePerUnit"
+                    value="<%= Assignment.PricePerUnit %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="totalValueNumberField">Total Value</label>
+                    <input type="number" class="form-control"
+                    id="totalValueNumberField"
+                    placeholder="Enter the Total Value"
+                    name="TotalValue"
+                    value="<%= Assignment.TotalValue %>"
                     required>
                 </div>
 
