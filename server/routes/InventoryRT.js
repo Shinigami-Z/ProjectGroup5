@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 //const { router } = require('../config/app');
-let Book = require('../models/Assignments');
-let AssignmentController = require('../controllers/Assignments')
+let Book = require('../models/InventoryRT');
+let AssignmentController = require('../controllers/InventoryRT')
 /* Get route for the Assignments */
 // Read Operation
 router.get('/', AssignmentController.DislayAssignments);

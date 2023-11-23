@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="" />
+    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/config/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/Assignments.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/InventoryRT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Assignments.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/InventoryRT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/Assignments.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/InventoryRT.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +19,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2YXzfxueZNIyo2Z4JfhxBFnGZPo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,6 +33,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/arshiamortazavinezhad/Desktop/programming/WebDevelopmentCourse/ProjectGroup5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -36,6 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700686819980</updated>
       <workItem from="1700686821139" duration="14000" />
+      <workItem from="1700769128408" duration="2355000" />
     </task>
     <servers />
   </component>

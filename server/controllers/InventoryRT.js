@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 //const { router } = require('../config/app');
-let Assignment = require('../models/Assignments');
+let Assignment = require('../models/InventoryRT');
 
 module.exports.DislayAssignments = async (req, res, next)=>{ //< Mark function as async
     try{

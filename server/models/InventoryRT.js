@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 // create a model class
-let assignmentsModel = mongoose.Schema({
+let ProductModel = mongoose.Schema({
     ItemName:String,
     NumOfUnits:Number,
     PricePerUnit:Number,
@@ -10,4 +10,4 @@ let assignmentsModel = mongoose.Schema({
 {
     collection:"inventory"
 });
-module.exports = mongoose.model('Assignments',assignmentsModel);
+module.exports = mongoose.model('Products',ProductModel);
