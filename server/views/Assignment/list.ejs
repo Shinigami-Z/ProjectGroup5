@@ -3,38 +3,39 @@
 <main class="container">
     <div class="row">
         <div class="offset-md-1 col-md-10">
-            <h1><% title %> </h1>  
+            <h1><% title %> </h1>
             <a href="/assignments/add" class="btn btn-primary text-light"
                role="button"><i class="fas fa-plus-circle"></i> Add Assignment</a>
-        <br>
-        <table class="table table-bordered table table-striped table-hover">
-            <tr class="d-flex">
-                <th class="text-center col-3">Course</th>
-                <th class="text-center col-5">Assignment Name</th>
-                <th class="text-center col-2">Due date</th>
-                <th class="text-center col-2"></th>
-            </tr>
-            <% for(let count=0;count<Assignments.length;count++) { %>
-            <tr class="d-flex">
-                <td class="text-center col-3"><%= Assignments[count].Course %></td>
-                <td class="text-center col-5"><%= Assignments[count].AssignmentName %></td>
-                <td class="text-center col-2"><%= Assignments[count].DueDate %></td>
-                <td class="text-center col-1">
-                    <a href="/assignments/edit/<%= Assignments[count]._id %>"
-                        class="btn btn-primary btn-sm">
-                        <i class="fas fa-pencil-alt"></i> Edit
-                    </a>
-                </td>
-                <td class="text-center col-1">
-                    <a href="/assignments/delete/<%= Assignments[count]._id %>"
-                        class="btn btn-danger btn-sm">
-                        <i class="fas trash-alt"></i> Delete
-                    </a>
-                </td>
-            </tr>
-            <% } %>
-        </table>
-    </div>
+            <br>
+            <table class="table table-bordered table table-striped table-hover">
+                <tr class="d-flex">
+                    <th class="text-center col-3">Item Name</th>
+                    <th class="text-center col-2">Number of Units</th>
+                    <th class="text-center col-2">Price per Unit</th>
+                    <th class="text-center col-2">Total Value</th>
+                </tr>
+                <% for(let count=0;count<Assignments.length;count++) { %>
+                    <tr class="d-flex">
+                        <td class="text-center col-3"><%= Assignments[count].ItemName %></td>
+                        <td class="text-center col-2"><%= Assignments[count].NumOfUnits %></td>
+                        <td class="text-center col-2"><%= Assignments[count].PricePerUnit %></td>
+                        <td class="text-center col-2"><%= Assignments[count].TotalValue %></td>
+                        <td class="text-center col-1">
+                            <a href="/assignments/edit/<%= Assignments[count]._id %>"
+                               class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit
+                            </a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/assignments/delete/<%= Assignments[count]._id %>"
+                               class="btn btn-danger btn-sm">
+                                <i class="fas trash-alt"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
     </div>
 </main>
 <% include ../partials/footer.ejs %>
