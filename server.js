@@ -5,7 +5,7 @@
  */
 
 var app = require('./server/config/app');
-var debug = require('debug')('CRUD-Assignment-3:server');
+var debug = require('debug')('CRUD-Products-3:server');
 var http = require('http');
 
 /**

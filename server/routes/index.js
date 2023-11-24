@@ -26,7 +26,7 @@ router.get('/about', function(req, res, next) {
 
 /* GET Products page. */
 router.get('/products', function(req, res, next) {
-  res.render('index', { 
+  res.render('../views/Products/list', {
     title: 'Products'  
   });
 });

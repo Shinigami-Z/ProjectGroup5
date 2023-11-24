@@ -4,7 +4,7 @@
     <div class="row">
         <div class="offset-md-1 col-md-10">
             <h1><% title %> </h1>
-            <a href="/assignments/add" class="btn btn-primary text-light"
+            <a href="/InventoryRT/add" class="btn btn-primary text-light"
                role="button"><i class="fas fa-plus-circle"></i> Add Inventory Item</a>
             <br>
             <table class="table table-bordered table table-striped table-hover">
@@ -14,20 +14,20 @@
                     <th class="text-center col-2">Price per Unit</th>
                     <th class="text-center col-2">Total Value</th>
                 </tr>
-                <% for(let count=0;count<Assignments.length;count++) { %>
+                <% for(let count=0;count<InventoryRT.length;count++) { %>
                     <tr class="d-flex">
-                        <td class="text-center col-3"><%= Assignments[count].ItemName %></td>
-                        <td class="text-center col-2"><%= Assignments[count].NumOfUnits %></td>
-                        <td class="text-center col-2"><%= Assignments[count].PricePerUnit %></td>
-                        <td class="text-center col-2"><%= Assignments[count].TotalValue %></td>
+                        <td class="text-center col-3"><%= InventoryRT[count].ItemName %></td>
+                        <td class="text-center col-2"><%= InventoryRT[count].NumOfUnits %></td>
+                        <td class="text-center col-2"><%= InventoryRT[count].PricePerUnit %></td>
+                        <td class="text-center col-2"><%= InventoryRT[count].TotalValue %></td>
                         <td class="text-center col-1">
-                            <a href="/assignments/edit/<%= Assignments[count]._id %>"
+                            <a href="/InventoryRT/edit/<%= InventoryRT[count]._id %>"
                                class="btn btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt"></i> Edit
                             </a>
                         </td>
                         <td class="text-center col-1">
-                            <a href="/assignments/delete/<%= Assignments[count]._id %>"
+                            <a href="/InventoryRT/delete/<%= InventoryRT[count]._id %>"
                                class="btn btn-danger btn-sm">
                                 <i class="fas trash-alt"></i> Delete
                             </a>

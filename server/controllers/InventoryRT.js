@@ -39,9 +39,9 @@ module.exports.AddProducts = async (req, res, next)=>{
 module.exports.CreateProducts = async (req, res, next)=>{
     try{
         let newProducts = Products({
-            "Course":req.body.Course,
-            "ProductsName": req.body.ProductsName,
-            "DueDate": req.body.DueDate,
+            "ItemName":req.body.ItemName,
+            "NumOfUnits": req.body.NumOfUnits,
+            "PricePerUnit": req.body.PricePerUnit,
         });
         Products.create(newProducts).then(() =>{
             res.redirect('/InventoryRT')
@@ -80,9 +80,9 @@ module.exports.ProcessEditProducts = (req, res, next)=>{
         const id = req.params.id;
         let updatedProducts = Products({
             "_id":id,
-            "Course":req.body.Course,
-            "ProductsName": req.body.ProductsName,
-            "DueDate": req.body.DueDate,
+            "ItemName":req.body.ItemName,
+            "NumOfUnits": req.body.NumOfUnits,
+            "PricePerUnit": req.body.PricePerUnit,
         });
         Products.findByIdAndUpdate(id,updatedProducts).then(()=>{
             res.redirect('/InventoryRT')
