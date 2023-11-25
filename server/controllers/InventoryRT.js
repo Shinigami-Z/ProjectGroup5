@@ -42,6 +42,7 @@ module.exports.CreateProducts = async (req, res, next)=>{
             "ItemName":req.body.ItemName,
             "NumOfUnits": req.body.NumOfUnits,
             "PricePerUnit": req.body.PricePerUnit,
+            "TotalValue":req.body.TotalValue
         });
         Products.create(newProducts).then(() =>{
             res.redirect('/InventoryRT')
@@ -83,6 +84,7 @@ module.exports.ProcessEditProducts = (req, res, next)=>{
             "ItemName":req.body.ItemName,
             "NumOfUnits": req.body.NumOfUnits,
             "PricePerUnit": req.body.PricePerUnit,
+            "TotalValue":req.body.TotalValue
         });
         Products.findByIdAndUpdate(id,updatedProducts).then(()=>{
             res.redirect('/InventoryRT')
