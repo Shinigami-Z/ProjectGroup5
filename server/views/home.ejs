@@ -4,7 +4,12 @@
         <h1>Welcome,</h1>
         <h1>This Site helps with Inventory Management</h1>
         <h1>Click Below to Proceed</h1>
-        <a href="/Products" class="btn btn-primary"
-           role="button"><i class="fa-solid fa-calendar-days fa-beat fa-lg"></i> Inventory</a>
+        <%if(typeof DisplayName=='String' && DisplayName){%>
+            <a href="/Products" class="btn btn-primary"
+               role="button"><i class="fa-solid fa-calendar-days fa-beat fa-lg"></i> Inventory</a>
+        <%} else {%>
+            <a href="REPLACE WITH LOGIN PAGE" class="btn btn-primary"
+               role="button"><i class="fa-solid fa-calendar-days fa-beat fa-lg"></i> Login Page</a>
+        <%}%>
     </div>
 <!--End Home Section-->
