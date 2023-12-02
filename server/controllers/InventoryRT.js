@@ -3,12 +3,13 @@ var router = express.Router();
 //const { router } = require('../config/app');
 let Products = require('../models/InventoryRT');
 
-module.exports.DislayInventoryRT = async (req, res, next)=>{ //< Mark function as async
+module.exports.DisplayInventoryRT = async (req, res, next)=>{ //< Mark function as async
     try{
         const InventoryRT = await Products.find(); //< Use of await keyword
         res.render('Products/list', {
             title: 'InventoryRT',
-            InventoryRT: InventoryRT
+            InventoryRT: InventoryRT,
+            DisplayName: req.user ? req.user.DisplayName: ''
         });
     }catch(err){
         console.error(err);
@@ -23,7 +24,8 @@ module.exports.AddProducts = async (req, res, next)=>{
     try{
         res.render('Products/add',
             {
-                title:'Add Products'
+                title:'Add Products',
+                DisplayName: req.user ? req.user.DisplayName: ''
             })
     }
     catch(err)
@@ -64,7 +66,8 @@ module.exports.EditProducts = async (req, res, next)=>{
         res.render('Products/edit',
             {
                 title:'Edit Products',
-                Products:ProductsToEdit
+                Products:ProductsToEdit,
+                DisplayName: req.user ? req.user.DisplayName: ''
             })
     }
     catch(error){
@@ -114,4 +117,96 @@ module.exports.DeleteProducts = (req, res, next)=>{
                 error: 'Error on the server'
             });
     }
+}
+module.exports.DisplayLoginPage = (req, res, next)=>{
+    if(!req.user)
+    {
+        res.render('auth/login',
+            {
+                title:'Login',
+                message: req.flash('loginMessage'),
+                DisplayName: req.user ? req.user.DisplayName: ''
+            });
+    }
+    else
+    {
+        return res.redirect('/')
+    }
+}
+module.exports.ProccessLoginPage = (req, res, next)=>{
+    passport.authenticate('local',(err,user, info)=>
+        {
+            // server error
+            if (err)
+            {
+                return next(err);
+            }
+            // login error
+            if (!user)
+            {
+                req.flash('loginMessage',
+                    'AuthenticationError');
+                return res.redirect('/login');
+            }
+            req.login(user,(err)=>{
+                if(err)
+                {
+                    return next(err)
+                }
+                return res.redirect('/InventoryRT');
+            })
+        }) (req,res,next)
+}
+module.exports.DisplayRegistrationPage = (req, res, next)=>{
+    // check if user is logged in
+    if(!req.user)
+    {
+        res.render('auth/register',
+            {
+                title: 'login',
+                message: req.flash('registerMessage'),
+                DisplayName: req.user ? req.user.DisplayName: ''
+            });
+    }
+    else
+    {
+        return res.redirect('/')
+    }
+}
+module.exports.ProcessRegistrationPage = (req, res, next)=>{
+    let newUser = new User({
+        username: req.body.username,
+        email:req.body.email,
+        DisplayName: req.body.DisplayName
+    })
+    User.register(newUser, req.body.password, (err)=>{
+        if(err) {
+            console.log('Error: inserting new user')
+
+            if (err.name == 'UserExistsError') {
+                req.flash('registerMessage',
+                    'Registation Error: User Already Exists');
+            }
+            return res.render('auth/register',
+                {
+                    title: 'Register',
+                    message: req.flash('registerMessage'),
+                    DisplayName: req.user ? req.user.DisplayName : ''
+                });
+        }
+        else
+            {
+                return passport.authenticate('local')(req, res, () => {
+                    res.redirect('/InventoryRT');
+                })
+            }
+    })
+}
+module.exports.PerformLogout = (req, res, next)=>{
+    req.logout(function(err){
+        if(err){
+            return next(err);
+        }
+    })
+    res.redirect('/');
 }

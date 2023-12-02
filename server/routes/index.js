@@ -40,9 +40,8 @@ router.get('/services', function(req, res, next) {
 
 /* GET Contact page. */
 router.get('/contactus', function(req, res, next) {
-  res.render('index', { 
+  res.render('index', {
     title: 'Contact'  
   });
 });
-
 module.exports = router;

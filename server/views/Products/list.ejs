@@ -4,10 +4,13 @@
     <div class="row">
         <div class="offset-md-1 col-md-10">
             <h1><% title %> </h1>
+            <%if(typeof DisplayName=='String' && DisplayName){%>
             <a href="/InventoryRT/add" class="btn btn-primary text-light"
                role="button"><i class="fas fa-plus-circle"></i> Add Inventory Item</a>
             <br>
+            <%}%>
             <table class="table table-bordered table table-striped table-hover">
+                <%if(typeof DisplayName=='String' && DisplayName){%>
                 <tr class="d-flex">
                     <th class="text-center col-3">Item Name</th>
                     <th class="text-center col-2">Number of Units</th>
@@ -32,8 +35,24 @@
                                 <i class="fas trash-alt"></i> Delete
                             </a>
                         </td>
+                        <%}%>
                     </tr>
-                <% } %>
+                    <% } else {%>
+                        <tr class="d-flex">
+                            <th class="text-center col-3">Item Name</th>
+                            <th class="text-center col-3">Number of Units</th>
+                            <th class="text-center col-3">Price per Unit</th>
+                            <th class="text-center col-3">Total Value</th>
+                        </tr>
+                        <% for(let count=0;count<InventoryRT.length;count++) { %>
+                        <tr class="d-flex">
+                            <td class="text-center col-3"><%= InventoryRT[count].ItemName %></td>
+                            <td class="text-center col-3"><%= InventoryRT[count].NumOfUnits %></td>
+                            <td class="text-center col-3"><%= InventoryRT[count].PricePerUnit %></td>
+                            <td class="text-center col-3"><%= InventoryRT[count].TotalValue %></td>
+                            <%}%>
+                        </tr>
+                <%}%>
             </table>
         </div>
     </div>

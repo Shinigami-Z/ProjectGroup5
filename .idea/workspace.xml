@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/InventoryRT.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/InventoryRT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/InventoryRT.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/InventoryRT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/Products/list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/Products/list.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/partials/main_nav.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/partials/main_nav.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,15 +34,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/arshiamortazavinezhad/Desktop/programming/WebDevelopmentCourse/ProjectGroup5",
+    "last_opened_file_path": "C:/Users/kelvi/OneDrive/Documents/Year 2 Sem 1/web and script/Assignment 3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "inlay.hints",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Nodemon" type="NodeJSConfigurationType" node-parameters="C:\Users\kelvi\AppData\Roaming\npm\node_modules\nodemon\bin\nodemon" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700686819980</updated>
       <workItem from="1700686821139" duration="14000" />
-      <workItem from="1700769128408" duration="9411000" />
+      <workItem from="1700769128408" duration="9032000" />
     </task>
     <servers />
   </component>
