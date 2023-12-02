@@ -1,0 +1,415 @@
+Index: server/routes/InventoryRT.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>var express = require('express');\r\nvar router = express.Router();\r\n//const { router } = require('../config/app');\r\nlet Products = require('../models/InventoryRT');\r\nlet ProductsController = require('../controllers/InventoryRT')\r\n\r\nfunction RequireAuth(req,res,next)\r\n{\r\n if(!req.isAuthenticated())\r\n {\r\n  return res.redirect('/login');\r\n }\r\n next();\r\n}\r\n/* Get route for the InventoryRT */\r\n// Read Operation\r\nrouter.get('/', ProductsController.DisplayInventoryRT);\r\n/* Get route for Add Products page --> Create */\r\nrouter.get('/add', RequireAuth,ProductsController.AddProducts);\r\n/* Post route for Add Products page --> Create */\r\nrouter.post('/add', RequireAuth,ProductsController.CreateProducts);\r\n/* Get route for displaying the Edit Products page --> Update */\r\nrouter.get('/edit/:id', RequireAuth,ProductsController.EditProducts);\r\n/* Post route for processing the Edit Products page --> Update */\r\nrouter.post('/edit/:id', RequireAuth,ProductsController.ProcessEditProducts);\r\n/* Get to perform Delete Operation --> Delete Operation */\r\nrouter.get('/delete/:id', RequireAuth,ProductsController.DeleteProducts);\r\n/* Get login page */\r\nrouter.get('/login', ProductsController.DisplayLoginPage);\r\n/* Post login page */\r\nrouter.post('/login', ProductsController.ProccessLoginPage);\r\n/* Get registration page */\r\nrouter.get('/registration', ProductsController.DisplayRegistrationPage);\r\n/* Post registration page */\r\nrouter.post('/registration', ProductsController.ProcessRegistrationPage);\r\n/* Get logout page */\r\nrouter.get('/logout', ProductsController.PerformLogout);\r\n module.exports = router;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/routes/InventoryRT.js b/server/routes/InventoryRT.js
+--- a/server/routes/InventoryRT.js	(revision 5ffd513a641e77ac3d38f35315953ed6443b76cb)
++++ b/server/routes/InventoryRT.js	(date 1701546277394)
+@@ -25,14 +25,4 @@
+ router.post('/edit/:id', RequireAuth,ProductsController.ProcessEditProducts);
+ /* Get to perform Delete Operation --> Delete Operation */
+ router.get('/delete/:id', RequireAuth,ProductsController.DeleteProducts);
+-/* Get login page */
+-router.get('/login', ProductsController.DisplayLoginPage);
+-/* Post login page */
+-router.post('/login', ProductsController.ProccessLoginPage);
+-/* Get registration page */
+-router.get('/registration', ProductsController.DisplayRegistrationPage);
+-/* Post registration page */
+-router.post('/registration', ProductsController.ProcessRegistrationPage);
+-/* Get logout page */
+-router.get('/logout', ProductsController.PerformLogout);
+- module.exports = router;
+\ No newline at end of file
++module.exports = router;
+\ No newline at end of file
+Index: server/routes/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>var express = require('express');\r\nvar router = express.Router();\r\n\r\n/* GET home page. */\r\nrouter.get('/', function(req, res, next) {\r\n  res.render('index', { \r\n    title: 'Home'  \r\n  });\r\n});\r\n\r\n/* GET home page. */\r\nrouter.get('/home', function(req, res, next) {\r\n  res.render('index', { \r\n    title: 'Home'  \r\n  });\r\n});\r\n\r\n\r\n/* GET About page. */\r\nrouter.get('/about', function(req, res, next) {\r\n  res.render('index', { \r\n    title: 'About Us'  \r\n  });\r\n});\r\n\r\n\r\n/* GET Products page. */\r\nrouter.get('/products', function(req, res, next) {\r\n  res.render('../views/Products/list', {\r\n    title: 'Products'  \r\n  });\r\n});\r\n\r\n/* GET Services page. */\r\nrouter.get('/services', function(req, res, next) {\r\n  res.render('index', { \r\n    title: 'Services'  \r\n  });\r\n});\r\n\r\n/* GET Contact page. */\r\nrouter.get('/contactus', function(req, res, next) {\r\n  res.render('index', {\r\n    title: 'Contact'  \r\n  });\r\n});\r\nmodule.exports = router;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/routes/index.js b/server/routes/index.js
+--- a/server/routes/index.js	(revision 5ffd513a641e77ac3d38f35315953ed6443b76cb)
++++ b/server/routes/index.js	(date 1701546277366)
+@@ -1,6 +1,101 @@
+ var express = require('express');
+ var router = express.Router();
++let userModel = require('../models/user');
++let User = userModel.User;
++
++router.get('/login',function(req,res,next){
++  if(!req.user)
++  {
++    res.render('auth/login',
++        {
++          title:'Login',
++          message: req.flash('loginMessage'),
++          displayName: req.user ? req.user.displayName:''
++        })
++  }
++  else{
++    return res.redirect('/home')
++  }
++})
++router.post('/login',function(req,res,next){
++  passport.authenticate('local',function(err,User,info){
++    // server error
++    if(err)
++    {
++      return next(err);
++    }
++    // login error
++    if(!User)
++    {
++      req.flash('loginMessage',
++          'AuthenticationError');
++      return res.redirect('/login')
++    }
++    req.login(User,(err)=>{
++      if(err)
++      {
++        return next(err)
++      }
++      return res.redirect('/InventoryRT');
++    })
++  })(req,res,next)
++})
+ 
++router.get('/register',function(req,res,next){
++  if(!req.user)
++  {
++    res.render('auth/register',
++        {
++          title:'Register',
++          message: req.flash('registerMessage'),
++          displayName: req.user ? req.user.displayName: ''
++        })
++  }
++  else{
++    return res.redirect('/home')
++  }
++})
++
++router.post('/register', function(req,res,next){
++  let newUser = new User({
++    username: req.body.username,
++    // password: req.body.password,
++    email: req.body.email,
++    displayName: req.body.displayName
++  })
++  User.register(newUser, req.body.password,(err) => {
++    if(err)
++    {
++      console.log("Error in inserting new User");
++      if(err.name =='UserExistError')
++      {
++        req.flash('registerMessage',
++            'Registration Error : User already Exist'
++        )}
++      return res.render('auth/register',
++          {
++            title:'Register',
++            message: req.flash('registerMessage'),
++            displayName: req.user ? req.user.displayName:''
++          })
++    }
++    else{
++      return passport.authenticate('local')(req,res,()=>{
++        res.redirect('/InventoryRT');
++      })
++    }
++  })
++})
++
++router.get('/logout',function(req,res,next){
++  req.logout(function(err){
++    if(err)
++    {
++      return next(err);
++    }
++  })
++  res.redirect('/home')
++})
+ /* GET home page. */
+ router.get('/', function(req, res, next) {
+   res.render('index', { 
+Index: server/controllers/InventoryRT.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>var express = require('express');\r\nvar router = express.Router();\r\n//const { router } = require('../config/app');\r\nlet Products = require('../models/InventoryRT');\r\n\r\nmodule.exports.DisplayInventoryRT = async (req, res, next)=>{ //< Mark function as async\r\n    try{\r\n        const InventoryRT = await Products.find(); //< Use of await keyword\r\n        res.render('Products/list', {\r\n            title: 'InventoryRT',\r\n            InventoryRT: InventoryRT,\r\n            DisplayName: req.user ? req.user.DisplayName: ''\r\n        });\r\n    }catch(err){\r\n        console.error(err);\r\n        //Handle error\r\n        res.render('Products/list', {\r\n            error: 'Error on server'\r\n        });\r\n    }\r\n};\r\n\r\nmodule.exports.AddProducts = async (req, res, next)=>{\r\n    try{\r\n        res.render('Products/add',\r\n            {\r\n                title:'Add Products',\r\n                DisplayName: req.user ? req.user.DisplayName: ''\r\n            })\r\n    }\r\n    catch(err)\r\n    {\r\n        console.error(err);\r\n        res.render('Products/list',\r\n            {\r\n                error: 'Error on the server'\r\n            });\r\n    }\r\n};\r\n\r\nmodule.exports.CreateProducts = async (req, res, next)=>{\r\n    try{\r\n        let newProducts = Products({\r\n            \"ItemName\":req.body.ItemName,\r\n            \"NumOfUnits\": req.body.NumOfUnits,\r\n            \"PricePerUnit\": req.body.PricePerUnit,\r\n            \"TotalValue\":req.body.TotalValue\r\n        });\r\n        Products.create(newProducts).then(() =>{\r\n            res.redirect('/InventoryRT')\r\n        })\r\n    }\r\n    catch(error){\r\n        console.error(err);\r\n        res.render('Products/list',\r\n            {\r\n                error: 'Error on the server'\r\n            });\r\n    }\r\n};\r\n    \r\nmodule.exports.EditProducts = async (req, res, next)=>{\r\n    try{\r\n        const id = req.params.id;\r\n        const ProductsToEdit = await Products.findById(id);\r\n        res.render('Products/edit',\r\n            {\r\n                title:'Edit Products',\r\n                Products:ProductsToEdit,\r\n                DisplayName: req.user ? req.user.DisplayName: ''\r\n            })\r\n    }\r\n    catch(error){\r\n        console.error(err);\r\n        res.render('Products/list',\r\n            {\r\n                error: 'Error on the server'\r\n            });\r\n    }\r\n}\r\n\r\nmodule.exports.ProcessEditProducts = (req, res, next)=>{\r\n    try{\r\n        const id = req.params.id;\r\n        let updatedProducts = Products({\r\n            \"_id\":id,\r\n            \"ItemName\":req.body.ItemName,\r\n            \"NumOfUnits\": req.body.NumOfUnits,\r\n            \"PricePerUnit\": req.body.PricePerUnit,\r\n            \"TotalValue\":req.body.TotalValue\r\n        });\r\n        Products.findByIdAndUpdate(id,updatedProducts).then(()=>{\r\n            res.redirect('/InventoryRT')\r\n        });\r\n    }\r\n    catch(error){\r\n        console.error(err);\r\n        res.render('Products/list',\r\n            {\r\n                error: 'Error on the server'\r\n            });\r\n    }\r\n}\r\n\r\nmodule.exports.DeleteProducts = (req, res, next)=>{\r\n    try{\r\n        let id = req.params.id;\r\n        Products.deleteOne({_id:id}).then(() =>\r\n        {\r\n            res.redirect('/InventoryRT')\r\n        })\r\n    }\r\n    catch(error){\r\n        console.error(err);\r\n        res.render('Products/list',\r\n            {\r\n                error: 'Error on the server'\r\n            });\r\n    }\r\n}\r\nmodule.exports.DisplayLoginPage = (req, res, next)=>{\r\n    if(!req.user)\r\n    {\r\n        res.render('auth/login',\r\n            {\r\n                title:'Login',\r\n                message: req.flash('loginMessage'),\r\n                DisplayName: req.user ? req.user.DisplayName: ''\r\n            });\r\n    }\r\n    else\r\n    {\r\n        return res.redirect('/')\r\n    }\r\n}\r\nmodule.exports.ProccessLoginPage = (req, res, next)=>{\r\n    passport.authenticate('local',(err,user, info)=>\r\n        {\r\n            // server error\r\n            if (err)\r\n            {\r\n                return next(err);\r\n            }\r\n            // login error\r\n            if (!user)\r\n            {\r\n                req.flash('loginMessage',\r\n                    'AuthenticationError');\r\n                return res.redirect('/login');\r\n            }\r\n            req.login(user,(err)=>{\r\n                if(err)\r\n                {\r\n                    return next(err)\r\n                }\r\n                return res.redirect('/InventoryRT');\r\n            })\r\n        }) (req,res,next)\r\n}\r\nmodule.exports.DisplayRegistrationPage = (req, res, next)=>{\r\n    // check if user is logged in\r\n    if(!req.user)\r\n    {\r\n        res.render('auth/register',\r\n            {\r\n                title: 'login',\r\n                message: req.flash('registerMessage'),\r\n                DisplayName: req.user ? req.user.DisplayName: ''\r\n            });\r\n    }\r\n    else\r\n    {\r\n        return res.redirect('/')\r\n    }\r\n}\r\nmodule.exports.ProcessRegistrationPage = (req, res, next)=>{\r\n    let newUser = new User({\r\n        username: req.body.username,\r\n        email:req.body.email,\r\n        DisplayName: req.body.DisplayName\r\n    })\r\n    User.register(newUser, req.body.password, (err)=>{\r\n        if(err) {\r\n            console.log('Error: inserting new user')\r\n\r\n            if (err.name == 'UserExistsError') {\r\n                req.flash('registerMessage',\r\n                    'Registation Error: User Already Exists');\r\n            }\r\n            return res.render('auth/register',\r\n                {\r\n                    title: 'Register',\r\n                    message: req.flash('registerMessage'),\r\n                    DisplayName: req.user ? req.user.DisplayName : ''\r\n                });\r\n        }\r\n        else\r\n            {\r\n                return passport.authenticate('local')(req, res, () => {\r\n                    res.redirect('/InventoryRT');\r\n                })\r\n            }\r\n    })\r\n}\r\nmodule.exports.PerformLogout = (req, res, next)=>{\r\n    req.logout(function(err){\r\n        if(err){\r\n            return next(err);\r\n        }\r\n    })\r\n    res.redirect('/');\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/controllers/InventoryRT.js b/server/controllers/InventoryRT.js
+--- a/server/controllers/InventoryRT.js	(revision 5ffd513a641e77ac3d38f35315953ed6443b76cb)
++++ b/server/controllers/InventoryRT.js	(date 1701546277381)
+@@ -117,96 +117,4 @@
+                 error: 'Error on the server'
+             });
+     }
+-}
+-module.exports.DisplayLoginPage = (req, res, next)=>{
+-    if(!req.user)
+-    {
+-        res.render('auth/login',
+-            {
+-                title:'Login',
+-                message: req.flash('loginMessage'),
+-                DisplayName: req.user ? req.user.DisplayName: ''
+-            });
+-    }
+-    else
+-    {
+-        return res.redirect('/')
+-    }
+-}
+-module.exports.ProccessLoginPage = (req, res, next)=>{
+-    passport.authenticate('local',(err,user, info)=>
+-        {
+-            // server error
+-            if (err)
+-            {
+-                return next(err);
+-            }
+-            // login error
+-            if (!user)
+-            {
+-                req.flash('loginMessage',
+-                    'AuthenticationError');
+-                return res.redirect('/login');
+-            }
+-            req.login(user,(err)=>{
+-                if(err)
+-                {
+-                    return next(err)
+-                }
+-                return res.redirect('/InventoryRT');
+-            })
+-        }) (req,res,next)
+-}
+-module.exports.DisplayRegistrationPage = (req, res, next)=>{
+-    // check if user is logged in
+-    if(!req.user)
+-    {
+-        res.render('auth/register',
+-            {
+-                title: 'login',
+-                message: req.flash('registerMessage'),
+-                DisplayName: req.user ? req.user.DisplayName: ''
+-            });
+-    }
+-    else
+-    {
+-        return res.redirect('/')
+-    }
+-}
+-module.exports.ProcessRegistrationPage = (req, res, next)=>{
+-    let newUser = new User({
+-        username: req.body.username,
+-        email:req.body.email,
+-        DisplayName: req.body.DisplayName
+-    })
+-    User.register(newUser, req.body.password, (err)=>{
+-        if(err) {
+-            console.log('Error: inserting new user')
+-
+-            if (err.name == 'UserExistsError') {
+-                req.flash('registerMessage',
+-                    'Registation Error: User Already Exists');
+-            }
+-            return res.render('auth/register',
+-                {
+-                    title: 'Register',
+-                    message: req.flash('registerMessage'),
+-                    DisplayName: req.user ? req.user.DisplayName : ''
+-                });
+-        }
+-        else
+-            {
+-                return passport.authenticate('local')(req, res, () => {
+-                    res.redirect('/InventoryRT');
+-                })
+-            }
+-    })
+-}
+-module.exports.PerformLogout = (req, res, next)=>{
+-    req.logout(function(err){
+-        if(err){
+-            return next(err);
+-        }
+-    })
+-    res.redirect('/');
+ }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3acbe5cf-6aaf-432f-8add-e13343705ee6\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server/controllers/InventoryRT.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server/controllers/InventoryRT.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server/routes/InventoryRT.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server/routes/InventoryRT.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server/routes/index.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server/routes/index.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server/views/Products/list.ejs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server/views/Products/list.ejs\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server/views/partials/main_nav.ejs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server/views/partials/main_nav.ejs\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YXzfxueZNIyo2Z4JfhxBFnGZPo\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"C:/Users/kelvi/OneDrive/Documents/Year 2 Sem 1/web and script/Assignment 3\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"inlay.hints\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Nodemon\" type=\"NodeJSConfigurationType\" node-parameters=\"C:\\Users\\kelvi\\AppData\\Roaming\\npm\\node_modules\\nodemon\\bin\\nodemon\" working-dir=\"$PROJECT_DIR$\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3acbe5cf-6aaf-432f-8add-e13343705ee6\" name=\"Changes\" comment=\"\" />\r\n      <created>1700686819980</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700686819980</updated>\r\n      <workItem from=\"1700686821139\" duration=\"14000\" />\r\n      <workItem from=\"1700769128408\" duration=\"9032000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5ffd513a641e77ac3d38f35315953ed6443b76cb)
++++ b/.idea/workspace.xml	(date 1701546852139)
+@@ -5,17 +5,28 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/server/models/users.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/config/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/app.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/config/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/db.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/server/controllers/InventoryRT.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/InventoryRT.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/server/routes/InventoryRT.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/InventoryRT.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/server/views/Products/list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/Products/list.ejs" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/server/views/partials/main_nav.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/partials/main_nav.ejs" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="JavaScript File" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -28,22 +39,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "main",
+-    "last_opened_file_path": "C:/Users/kelvi/OneDrive/Documents/Year 2 Sem 1/web and script/Assignment 3",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "inlay.hints",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/kelvi/OneDrive/Documents/Year 2 Sem 1/web and script/Assignment 3&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="Nodemon" type="NodeJSConfigurationType" node-parameters="C:\Users\kelvi\AppData\Roaming\npm\node_modules\nodemon\bin\nodemon" working-dir="$PROJECT_DIR$">
+       <method v="2" />
+@@ -59,6 +70,7 @@
+       <updated>1700686819980</updated>
+       <workItem from="1700686821139" duration="14000" />
+       <workItem from="1700769128408" duration="9032000" />
++      <workItem from="1701544408590" duration="2400000" />
+     </task>
+     <servers />
+   </component>
+Index: server/models/users.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/models/users.js b/server/models/users.js
+new file mode 100644
+--- /dev/null	(date 1701545482999)
++++ b/server/models/users.js	(date 1701545482999)
+@@ -0,0 +1,53 @@
++let mongoose = require('mongoose');
++let passportLocalMongoose = require('passport-local-mongoose');
++
++let User = mongoose.Schema({
++        username:
++            {
++                type:String,
++                default:"",
++                trim:true,
++                required:'Username is required'
++            },
++
++        password:
++        {
++            type:String,
++            default:"",
++            trim:true,
++            required:'Password is required'
++        },
++
++        displayName:
++            {
++                type:String,
++                default:"",
++                trim:true,
++                required:'DisplayName is required'
++            },
++        email:
++            {
++                type:String,
++                default:"",
++                trim:true,
++                required:'Email is required'
++            },
++        created:
++            {
++                type:Date,
++                default: Date.now
++            },
++        update:
++            {
++                type:Date,
++                default: Date.now
++            }
++    },
++    {
++        collection: "user"
++    }
++)
++// configure this model
++let options = ({MissingPasswordError:'Wrong/Missing Password'});
++User.plugin(passportLocalMongoose,options);
++module.exports.User = mongoose.model('User',User);
+\ No newline at end of file
+Index: server/config/db.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module.exports = {\"URI\":\"mongodb+srv://Group5Project:AHjorTd@cluster0.mdtwyzm.mongodb.net/?retryWrites=true&w=majority\"}\r\nmodule.exports = {\"URI\":\"mongodb+srv://loginTracker:F9FTwJar2ZCFa6BI@logintracker.t2m9ut2.mongodb.net/?retryWrites=true&w=majority\"}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/config/db.js b/server/config/db.js
+--- a/server/config/db.js	(revision 5ffd513a641e77ac3d38f35315953ed6443b76cb)
++++ b/server/config/db.js	(date 1701544911849)
+@@ -1,2 +1,1 @@
+-module.exports = {"URI":"mongodb+srv://Group5Project:AHjorTd@cluster0.mdtwyzm.mongodb.net/?retryWrites=true&w=majority"}
+-module.exports = {"URI":"mongodb+srv://loginTracker:F9FTwJar2ZCFa6BI@logintracker.t2m9ut2.mongodb.net/?retryWrites=true&w=majority"}
+\ No newline at end of file
++module.exports = {"URI":"mongodb+srv://Group5Project:AHjorTd@cluster0.mdtwyzm.mongodb.net/?retryWrites=true&w=majority"}
+\ No newline at end of file
