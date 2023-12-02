@@ -1,1 +1,2 @@
 module.exports = {"URI":"mongodb+srv://Group5Project:AHjorTd@cluster0.mdtwyzm.mongodb.net/?retryWrites=true&w=majority"}
+module.exports = {"URI":"mongodb+srv://loginTracker:F9FTwJar2ZCFa6BI@logintracker.t2m9ut2.mongodb.net/?retryWrites=true&w=majority"}

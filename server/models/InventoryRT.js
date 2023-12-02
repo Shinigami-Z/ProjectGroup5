@@ -10,4 +10,12 @@ let ProductModel = mongoose.Schema({
 {
     collection:"inventory"
 });
+// create a model class
+let loginTracker = mongoose.Schema({
+    username:Number,
+    password:String
+},
+{
+    collection:"login"
+});
 module.exports = mongoose.model('Products',ProductModel);
