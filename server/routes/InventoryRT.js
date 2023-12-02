@@ -25,14 +25,4 @@ router.get('/edit/:id', RequireAuth,ProductsController.EditProducts);
 router.post('/edit/:id', RequireAuth,ProductsController.ProcessEditProducts);
 /* Get to perform Delete Operation --> Delete Operation */
 router.get('/delete/:id', RequireAuth,ProductsController.DeleteProducts);
-/* Get login page */
-router.get('/login', ProductsController.DisplayLoginPage);
-/* Post login page */
-router.post('/login', ProductsController.ProccessLoginPage);
-/* Get registration page */
-router.get('/registration', ProductsController.DisplayRegistrationPage);
-/* Post registration page */
-router.post('/registration', ProductsController.ProcessRegistrationPage);
-/* Get logout page */
-router.get('/logout', ProductsController.PerformLogout);
- module.exports = router;
+module.exports = router;
