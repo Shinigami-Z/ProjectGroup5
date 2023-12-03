@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="Updated Github link">
+    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="hiding buttons in list page + putting in the login button + some routing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/partials/main_nav.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/partials/main_nav.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/home.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/home.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hiding buttons in list page + putting in the login button + some routing." />
-    <MESSAGE value="Updated Github link" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Github link" />
+    <option name="LAST_COMMIT_MESSAGE" value="hiding buttons in list page + putting in the login button + some routing." />
   </component>
 </project>
