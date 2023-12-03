@@ -4,13 +4,13 @@
     <div class="row">
         <div class="offset-md-1 col-md-10">
             <h1><% title %> </h1>
-            <%if(typeof DisplayName=='String' && DisplayName){%>
+            <%if(typeof displayName=='string' && displayName){%>
             <a href="/InventoryRT/add" class="btn btn-primary text-light"
                role="button"><i class="fas fa-plus-circle"></i> Add Inventory Item</a>
             <br>
             <%}%>
             <table class="table table-bordered table table-striped table-hover">
-                <%if(typeof DisplayName=='String' && DisplayName){%>
+                <%if(typeof displayName=='string' && displayName){%>
                 <tr class="d-flex">
                     <th class="text-center col-3">Item Name</th>
                     <th class="text-center col-2">Number of Units</th>

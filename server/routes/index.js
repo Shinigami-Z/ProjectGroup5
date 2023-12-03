@@ -100,14 +100,16 @@ router.get('/logout',function(req,res,next){
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'Home'  
+    title: 'Home',
+    displayName: req.user ? req.user.displayName:''
   });
 });
 
 /* GET home page. */
 router.get('/home', function(req, res, next) {
   res.render('index', { 
-    title: 'Home'  
+    title: 'Home',
+    displayName: req.user ? req.user.displayName:''
   });
 });
 

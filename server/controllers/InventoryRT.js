@@ -9,7 +9,7 @@ module.exports.DisplayInventoryRT = async (req, res, next)=>{ //< Mark function 
         res.render('Products/list', {
             title: 'InventoryRT',
             InventoryRT: InventoryRT,
-            DisplayName: req.user ? req.user.DisplayName: ''
+            displayName: req.user ? req.user.displayName:''
         });
     }catch(err){
         console.error(err);
@@ -25,7 +25,7 @@ module.exports.AddProducts = async (req, res, next)=>{
         res.render('Products/add',
             {
                 title:'Add Products',
-                DisplayName: req.user ? req.user.DisplayName: ''
+                displayName: req.user ? req.user.displayName:''
             })
     }
     catch(err)
@@ -67,7 +67,7 @@ module.exports.EditProducts = async (req, res, next)=>{
             {
                 title:'Edit Products',
                 Products:ProductsToEdit,
-                DisplayName: req.user ? req.user.DisplayName: ''
+                displayName: req.user ? req.user.displayName:''
             })
     }
     catch(error){
