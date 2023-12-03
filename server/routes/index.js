@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let userModel = require('../models/user');
+const passport = require("passport");
 let User = userModel.User;
 
 router.get('/login',function(req,res,next){
@@ -18,7 +19,7 @@ router.get('/login',function(req,res,next){
   }
 })
 router.post('/login',function(req,res,next){
-  passport.authenticate('local',function(err,User,info){
+  passport.authenticate('local',function(err, User, info){
     // server error
     if(err)
     {
