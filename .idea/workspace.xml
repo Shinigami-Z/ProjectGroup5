@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="hiding buttons in list page + putting in the login button + some routing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/home.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/home.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Script/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/Script/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/config/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +60,9 @@
       <updated>1700686819980</updated>
       <workItem from="1700686821139" duration="14000" />
       <workItem from="1700769128408" duration="9032000" />
+      <workItem from="1701647732122" duration="370000" />
+      <workItem from="1701982504859" duration="276000" />
+      <workItem from="1701983127061" duration="1925000" />
     </task>
     <task id="LOCAL-00001" summary="hiding buttons in list page + putting in the login button + some routing.">
       <option name="closed" value="true" />

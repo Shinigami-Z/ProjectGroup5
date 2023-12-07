@@ -57,6 +57,33 @@ passport.deserializeUser(User.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+const GitHubStrategy = require('passport-github2').Strategy;
+
+passport.use(new GitHubStrategy({
+      clientID: 'bb2e411f39e1de1b3880',
+      clientSecret: '0117d82b35f2e1544091ea5b3c5d39f590404067',
+      callbackURL: 'https://the-inventory-hub.onrender.com/auth/github/callback'
+    },
+    async function(accessToken, refreshToken, profile, done) {
+      try {
+        let user = await User.findOne({ githubId: profile.id });
+        if (!user) {
+          // User not found, create a new user
+          user = new User({
+            githubId: profile.id,
+            username: profile.username,
+            displayName: profile.displayName,
+            email: profile.emails?.[0]?.value || 'No email provided' // Use optional chaining request the 'user:email' scope
+          });
+          await user.save();
+        }
+        done(null, user);
+      } catch (err) {
+        done(err);
+      }
+    }
+));
+
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let InventoryRTRouter = require('../routes/InventoryRT');

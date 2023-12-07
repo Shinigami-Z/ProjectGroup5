@@ -1,4 +1,4 @@
-// Immidiate invoked function express
+// Immediate invoked function express
 
 (function(){
     function Start(){
