@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="hiding buttons in list page + putting in the login button + some routing.">
+    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="fixed home button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/home.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/home.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/Products/list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/Products/list.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +68,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701538133828</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixed home button">
+      <option name="closed" value="true" />
+      <created>1701567030909</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701567030909</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,6 +95,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hiding buttons in list page + putting in the login button + some routing." />
-    <option name="LAST_COMMIT_MESSAGE" value="hiding buttons in list page + putting in the login button + some routing." />
+    <MESSAGE value="fixed home button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed home button" />
   </component>
 </project>

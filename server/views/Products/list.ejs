@@ -9,17 +9,19 @@
                role="button"><i class="fas fa-plus-circle"></i> Add Inventory Item</a>
             <br>
             <%}%>
+            <div class="table-responsive">
             <table class="table table-bordered table table-striped table-hover">
                 <%if(typeof displayName=='string' && displayName){%>
                 <tr class="d-flex">
-                    <th class="text-center col-3">Item Name</th>
+                    <th class="text-center col-4">Item Name</th>
                     <th class="text-center col-2">Number of Units</th>
                     <th class="text-center col-2">Price per Unit</th>
                     <th class="text-center col-2">Total Value</th>
+                    <th class="text-center col-2"></th>
                 </tr>
                 <% for(let count=0;count<InventoryRT.length;count++) { %>
                     <tr class="d-flex">
-                        <td class="text-center col-3"><%= InventoryRT[count].ItemName %></td>
+                        <td class="text-center col-4"><%= InventoryRT[count].ItemName %></td>
                         <td class="text-center col-2"><%= InventoryRT[count].NumOfUnits %></td>
                         <td class="text-center col-2"><%= InventoryRT[count].PricePerUnit %></td>
                         <td class="text-center col-2"><%= InventoryRT[count].TotalValue %></td>
@@ -37,6 +39,7 @@
                         </td>
                         <%}%>
                     </tr>
+
                     <% } else {%>
                         <tr class="d-flex">
                             <th class="text-center col-3">Item Name</th>
@@ -54,6 +57,7 @@
                         </tr>
                 <%}%>
             </table>
+            </div>
         </div>
     </div>
 </main>
