@@ -57,6 +57,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//GitHub login
 const GitHubStrategy = require('passport-github2').Strategy;
 
 passport.use(new GitHubStrategy({
@@ -74,6 +75,34 @@ passport.use(new GitHubStrategy({
             username: profile.username,
             displayName: profile.displayName,
             email: profile.emails?.[0]?.value || 'No email provided' // Use optional chaining request the 'user:email' scope
+          });
+          await user.save();
+        }
+        done(null, user);
+      } catch (err) {
+        done(err);
+      }
+    }
+));
+
+//Google login
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+      clientID: '217310531201-p7ut0gq1t72pm46vl1hq3md9uu1294et.apps.googleusercontent.com',
+      clientSecret: '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',
+      callbackURL: 'https://the-inventory-hub.onrender.com/auth/google/callback'
+    },
+    async function(accessToken, refreshToken, profile, done) {
+      try {
+        let user = await User.findOne({ googleId: profile.id });
+        if (!user) {
+          // User not found, create a new user
+          user = new User({
+            googleId: profile.id,
+            username: profile.username || profile.displayName, // Adjust according to available data
+            displayName: profile.displayName,
+            email: profile.emails[0].value, // Assuming the email is available
           });
           await user.save();
         }

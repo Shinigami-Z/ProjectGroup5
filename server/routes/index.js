@@ -28,6 +28,16 @@ router.get('/login',function(req,res,next){
     return res.redirect('/home')
   }
 })
+
+router.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/');
+    });
 router.post('/login',function(req,res,next){
   passport.authenticate('local',function(err, User, info){
     // server error
