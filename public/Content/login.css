@@ -34,14 +34,6 @@ fieldset
     backdrop-filter: blur(80px);
     border-radius: 5px;
 }
-.form-group
-{
-    position: relative;
-}
-.form-control
-{
-    position: relative;
-}
 #register
 {
     position: relative;
@@ -70,7 +62,8 @@ h1
 {
     position: absolute;
     right:0;
-    transform: translateX(-120%);
+    transform: translateX(-70%);
+    margin-top:10px;
 }
 .buttons
 {
@@ -80,7 +73,7 @@ h1
     margin-top: 20px;
     margin-right: 10px;
     left:50%;
-    transform: translateX(-50%);
+    transform: translateX(-45%);
 }
 .auth-container
 {
@@ -108,7 +101,6 @@ h1
 #Discord
 {
     background:#4B0082;
-
     color: white;
 }
 .logo
