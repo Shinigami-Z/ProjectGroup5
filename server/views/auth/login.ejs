@@ -1,4 +1,5 @@
 <%- include ../partials/header.ejs %>
+<link rel='stylesheet' href='/Content/login.css'/>
 <%- include ../partials/main_nav.ejs %>
 <main class="container">
     <!--Message Area-->
@@ -9,35 +10,39 @@
     <% } %>
 
     <div class="row">
-        <div class="offset-md-4 col-md-4">
-            <h1>Please login</h1>
+        <div class="offset">
+            <h1>Login</h1>
             <form method="post" autocomplete="off">
                 <fieldset class="form-group">
                     <label for="username"></label>
                     <input type="text" class="form-control"
-                    name="username" 
+                    name="username"
                     placeholder="Enter username"
                     id="username" required autofocus>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="password"></label>
                     <input type="password" class="form-control"
-                    name="password" 
+                    name="password"
                     placeholder="Enter password"
                     id="password" required>
-                    or
-                    <a href="/register">Register Here</a>
                 </fieldset>
-                <fieldset class="form-group text-right">
-                    <input type="submit" class="btn btn-success"
-                    value="Login">
-                    <a href="/">
-                        <input type="button" class="btn btn-warning" value="Cancel">
-                    </a>
+                <fieldset class="form-group">
+                    <div class = "buttons">
+                        <input id = "login" type="submit" class="btn btn-success" value="Login">
+                        <a href="/">
+                            <input type="button" class="btn btn-warning" value="Cancel">
+                        </a>
+                    </div>
+                    <div id = "register">
+                        <a id = "register-btn" href="/register">or Register Here</a>
+                    </div>
                 </fieldset>
-                <a href="/auth/github">Login with GitHub</a>
-                <a href="/auth/google">Login with Google</a>
-                <a href="/auth/discord">Login with Discord</a>
+                <div class = "auth-container">
+                    <button id = "GitHub" class="auth" onclick="window.location.href='/auth/github'"><img src = "/Asset\\Github-logo.png" alt = "github-logo" height="30px" class = "logo">Login with GitHub</button>
+                    <button id = "Google" class="auth" onclick="window.location.href='/auth/google'"><img src = "/Asset\\goole-logo.png" alt = "github-logo" height="30px" class = "logo">Login with Google</button>
+                    <button id = "Discord" class="auth" onclick="window.location.href='/auth/discord'"><img src = "/Asset\\discord-logo.png" alt = "github-logo" height="25px" class = "logo">Login with Discord</button>
+                </div>
             </form>
         </div>
     </div>

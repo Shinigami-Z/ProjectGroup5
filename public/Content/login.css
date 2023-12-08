@@ -1,0 +1,117 @@
+fieldset
+{
+    display: inline-block;
+    box-sizing: border-box;
+    width:100%;
+}
+.container
+{
+    width: 40%;
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+}
+.row
+{
+    display: block;
+    position: relative;
+    width: 100%;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+
+}
+.offset
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    border: solid 2px;
+    box-shadow: #171515 5px 10px 5px;
+    backdrop-filter: blur(80px);
+    border-radius: 5px;
+}
+.form-group
+{
+    position: relative;
+}
+.form-control
+{
+    position: relative;
+}
+#register
+{
+    position: relative;
+    margin-top: 10px;
+    right: 0;
+}
+.btn
+{
+    position: relative;
+    margin-right: 30px;
+    padding: 5px 50px;
+    text-align: center;
+}
+h1
+{
+    padding-top: 10px;
+    position: relative;
+    color: white;
+    margin: 0 auto;
+}
+#login
+{
+
+}
+#register-btn
+{
+    position: absolute;
+    right:0;
+    transform: translateX(-120%);
+}
+.buttons
+{
+    position: relative;
+    display:inline-block;
+    justify-content:space-between;
+    margin-top: 20px;
+    margin-right: 10px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.auth-container
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.auth
+{
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 22px;
+}
+#GitHub
+{
+    background-color: #171515;
+    color: white;
+    text-align: center;
+}
+#Discord
+{
+    background:#4B0082;
+
+    color: white;
+}
+.logo
+{
+    margin-right: 10px;
+}
