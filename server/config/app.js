@@ -113,6 +113,22 @@ passport.use(new GoogleStrategy({
     }
 ));
 
+// Discord Login
+const DiscordStrategy = require('passport-discord').Strategy;
+
+passport.use(new DiscordStrategy({
+        clientID: '1182473778664591530',
+        clientSecret: 'g2wJgNi3_uTZtzMzN4KFVdv-1X7SLPtp',
+        callbackURL: 'https://the-inventory-hub.onrender.com/auth/discord/callback',
+        scope: ['identify', 'email'] // Adjust the scope according to your needs
+    },
+    function(accessToken, refreshToken, profile, done) {
+        User.findOrCreate({ discordId: profile.id }, function (err, user) {
+            return done(err, user);
+        });
+    }
+));
+
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let InventoryRTRouter = require('../routes/InventoryRT');
