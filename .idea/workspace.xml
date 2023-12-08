@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="Added Discord Login option fix" />
+    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="fixed home button">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Content/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/Content/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/Products/list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/Products/list.ejs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,23 +28,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/kelvi/Downloads/Class Project CRUD with Auth",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "inlay.hints",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kelvi/Downloads/Class Project CRUD with Auth&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Nodemon" type="NodeJSConfigurationType" node-parameters="C:\Users\kelvi\AppData\Roaming\npm\node_modules\nodemon\bin\nodemon" working-dir="$PROJECT_DIR$">
       <method v="2" />
@@ -56,9 +60,6 @@
       <updated>1700686819980</updated>
       <workItem from="1700686821139" duration="14000" />
       <workItem from="1700769128408" duration="9032000" />
-      <workItem from="1701647732122" duration="370000" />
-      <workItem from="1701982504859" duration="276000" />
-      <workItem from="1701983127061" duration="6103000" />
     </task>
     <task id="LOCAL-00001" summary="hiding buttons in list page + putting in the login button + some routing.">
       <option name="closed" value="true" />
@@ -68,39 +69,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701538133828</updated>
     </task>
-    <task id="LOCAL-00002" summary="Added GitHub Login option">
+    <task id="LOCAL-00002" summary="fixed home button">
       <option name="closed" value="true" />
-      <created>1701991459022</created>
+      <created>1701567030909</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1701991459022</updated>
+      <updated>1701567030909</updated>
     </task>
-    <task id="LOCAL-00003" summary="Added Google Login option">
-      <option name="closed" value="true" />
-      <created>1701993225065</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701993225065</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added Discord Login option">
-      <option name="closed" value="true" />
-      <created>1701994652189</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1701994652189</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added Discord Login option fix">
-      <option name="closed" value="true" />
-      <created>1701994919238</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1701994919238</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,10 +96,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hiding buttons in list page + putting in the login button + some routing." />
-    <MESSAGE value="Added GitHub Login option" />
-    <MESSAGE value="Added Google Login option" />
-    <MESSAGE value="Added Discord Login option" />
-    <MESSAGE value="Added Discord Login option fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Discord Login option fix" />
+    <MESSAGE value="fixed home button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed home button" />
   </component>
 </project>
