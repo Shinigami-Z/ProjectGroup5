@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="Added Discord Login option">
-      <change beforePath="$PROJECT_DIR$/server/config/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/app.js" afterDir="false" />
-    </list>
+    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="Added Discord Login option fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +58,7 @@
       <workItem from="1700769128408" duration="9032000" />
       <workItem from="1701647732122" duration="370000" />
       <workItem from="1701982504859" duration="276000" />
-      <workItem from="1701983127061" duration="5593000" />
+      <workItem from="1701983127061" duration="6103000" />
     </task>
     <task id="LOCAL-00001" summary="hiding buttons in list page + putting in the login button + some routing.">
       <option name="closed" value="true" />
@@ -94,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701994652189</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Discord Login option fix">
+      <option name="closed" value="true" />
+      <created>1701994919238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701994919238</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +122,7 @@
     <MESSAGE value="Added GitHub Login option" />
     <MESSAGE value="Added Google Login option" />
     <MESSAGE value="Added Discord Login option" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Discord Login option" />
+    <MESSAGE value="Added Discord Login option fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Discord Login option fix" />
   </component>
 </project>

@@ -11,8 +11,8 @@ router.get('/auth/github',
 router.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/login' }),
     function(req, res) {
-      // Successful authentication, redirect home.
-      res.redirect('/');
+      // Successful authentication, redirect InventoryRT.
+      res.redirect('/InventoryRT');
     });
 
 //Discord Auth
@@ -22,8 +22,8 @@ router.get('/auth/discord',
 router.get('/auth/discord/callback',
     passport.authenticate('discord', { failureRedirect: '/login' }),
     function(req, res) {
-      // Successful authentication, redirect home.
-      res.redirect('/');
+      // Successful authentication, redirect InventoryRT.
+      res.redirect('/InventoryRT');
     });
 
 //Google Auth
@@ -33,8 +33,8 @@ router.get('/auth/google',
 router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-      // Successful authentication, redirect home.
-      res.redirect('/');
+      // Successful authentication, redirect InventoryRT.
+      res.redirect('/InventoryRT');
     });
 
 router.get('/login',function(req,res,next){
