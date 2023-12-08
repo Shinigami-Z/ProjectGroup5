@@ -122,10 +122,23 @@ passport.use(new DiscordStrategy({
         callbackURL: 'https://the-inventory-hub.onrender.com/auth/discord/callback',
         scope: ['identify', 'email'] // Adjust the scope according to your needs
     },
-    function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ discordId: profile.id }, function (err, user) {
-            return done(err, user);
-        });
+    async function(accessToken, refreshToken, profile, done) {
+        try {
+            let user = await User.findOne({ discordId: profile.id });
+            if (!user) {
+                // User not found, create a new user
+                user = new User({
+                    discordId: profile.id,
+                    username: profile.username, // Discord username
+                    displayName: profile.username, // Discord display name
+                    email: profile.emails?.[0]?.value || 'No email provided' // Email, if available
+                });
+                await user.save();
+            }
+            done(null, user);
+        } catch (err) {
+            done(err);
+        }
     }
 ));
 

@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="Added Google Login option">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    <list default="true" id="3acbe5cf-6aaf-432f-8add-e13343705ee6" name="Changes" comment="Added Discord Login option">
       <change beforePath="$PROJECT_DIR$/server/config/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/auth/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/auth/login.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +60,7 @@
       <workItem from="1700769128408" duration="9032000" />
       <workItem from="1701647732122" duration="370000" />
       <workItem from="1701982504859" duration="276000" />
-      <workItem from="1701983127061" duration="5291000" />
+      <workItem from="1701983127061" duration="5593000" />
     </task>
     <task id="LOCAL-00001" summary="hiding buttons in list page + putting in the login button + some routing.">
       <option name="closed" value="true" />
@@ -92,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701993225065</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Discord Login option">
+      <option name="closed" value="true" />
+      <created>1701994652189</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701994652189</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +115,7 @@
     <MESSAGE value="hiding buttons in list page + putting in the login button + some routing." />
     <MESSAGE value="Added GitHub Login option" />
     <MESSAGE value="Added Google Login option" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Google Login option" />
+    <MESSAGE value="Added Discord Login option" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Discord Login option" />
   </component>
 </project>
